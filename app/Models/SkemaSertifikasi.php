@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class SkemaSertifikasi extends Model
 {
-    protected $table = 'skema_sertifikasi';
+    protected $table = 'skema_sertifikasis';
     protected $fillable = [
         'kode',
         'nama',
@@ -16,6 +16,6 @@ class SkemaSertifikasi extends Model
 
     public function pesertas(): HasMany
     {
-        return $this->hasMany(Peserta::class);
+        return $this->hasMany(Peserta::class, 'skema_sertifikasi_id');
     }
 }

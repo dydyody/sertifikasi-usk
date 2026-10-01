@@ -12,12 +12,12 @@ class Peserta extends Model
         'nama',
         'nik',
         'email',
-        'no hp',
+        'no_hp',
         'alamat',
         'skema_sertifikasi_id',
     ];
 
-    public function skema(): BelongsTo
+    public function skemaSertifikasi(): BelongsTo
     {
         return $this->belongsTo(
             SkemaSertifikasi::class,

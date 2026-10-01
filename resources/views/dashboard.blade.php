@@ -35,7 +35,7 @@
                     <p class="text-muted">
                         Kelola Data Peserta Sertifikasi
                     </p>
-                    <a href="#" class="btn btn-primary">Kelola Peserta</a>
+                    <a href="{{route('peserta.index')}}" class="btn btn-primary">Kelola Peserta</a>
                 </div>
             </div>
         </div>
@@ -44,7 +44,7 @@
                 <div class="card-body">
                     <h5>Skema Sertifikasi</h5>
                     <p class="text-muted">Kelola Data Skema Sertifikasi.</p>
-                    <a href="#" class="btn btn-primary">Kelola Skema</a>
+                    <a href="{{route('skema.index')}}" class="btn btn-primary">Kelola Skema</a>
                 </div>
             </div>
         </div>

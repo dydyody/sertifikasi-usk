@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('nama');
             $table->string('nik', 20)->unique();
             $table->string('email')->nullable();
-            $table->string('no hp', 20)->nullable();
+            $table->string('no_hp', 20)->nullable();
             $table->text('alamat')->nullable();
 
             $table->foreignId('skema_sertifikasi_id')
