@@ -1,5 +1,6 @@
 @extends('layouts.app')
 @section('title', 'Data Peserta')
+@section('page-title','Data Peserta')
 @section('content')
 <style>
     .btn-utama{
@@ -51,7 +52,7 @@
 </style>
 <div class="d-flex justify-content-between align-items-center mb-4">
     <div>
-        <h2>Data Peserta</h2>
+        <h2 class="fw-bold mb-1">Data Peserta</h2>
         <p class="text-muted mb-0">
             Daftar peserta sertifikasi
         </p>
@@ -108,6 +109,7 @@
                         <th>NIK</th>
                         <th>Email</th>
                         <th>No. HP</th>
+                        <th>Alamat</th>
                         <th>Skema Sertifikasi</th>
                         <th width="190">Aksi</th>
                     </tr>
@@ -121,6 +123,7 @@
                         <td>{{ $peserta->nik }}</td>
                         <td>{{ $peserta->email ?? '-' }}</td>
                         <td>{{ $peserta->no_hp ?? '-' }}</td>
+                        <td>{{ $peserta->alamat ?? '-' }}</td>
                         <td>{{ $peserta->skemaSertifikasi->nama ?? '-' }}</td>
                         <td>
                             <a href="{{ route('peserta.show', $peserta->id) }}"class="btn btn-detail btn-sm">Detail</a>

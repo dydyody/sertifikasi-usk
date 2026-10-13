@@ -42,7 +42,7 @@
 </style>
 <div class="d-flex justify-content-between align-items-center mb-4">
     <div>
-        <h3 class="fw-bold mb-1">Skema Sertifikasi</h3>
+        <h2 class="fw-bold mb-1">Skema Sertifikasi</h2>
         <p class="text-muted mb-0">Kelola data skema sertifikasi</p>
     </div>
     <a href="{{route('skema.create')}}" class="btn btn-utama text-white">+ Tambah Skema</a>
@@ -107,14 +107,14 @@
                         </td>
                         <td>
                             <a href="{{route('skema.edit',$skema)}}" class="btn btn-edit btn-sm">Edit</a>
-                        
-                        <form 
+
+                        <form
                         action="{{route('skema.destroy',$skema)}}" method="POST" class="d-inline" onsubmit="return confirm('Yakin Ingin menghapus skema?')">
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="btn btn-hapus btn-sm">Hapus</button>
                         </form>
-                        </td>   
+                        </td>
                     </tr>
                     @endforeach
                 </tbody>

@@ -21,7 +21,17 @@ class AuthController extends Controller
         if (Auth::attempt($credentials))
             {
                 $request->session()->regenerate();
-                return redirect()->intended('/dashboard')->with('success','Login Berhasil.');
+                $user=Auth::user();
+                if($user->role==='admin'){
+                    return redirect()->route('dashboard');
+                }
+                if($user->role==='peserta'){
+                    return redirect()->route('peserta.dashboard');
+                }
+                Auth::logout();
+                return back()->withErrors([
+                    'email' => 'Role akun tidak valid.',
+                ])->onlyInput('email');
             }
         return back()->withErrors([
             'email'=>'Email atau Password Salah.',

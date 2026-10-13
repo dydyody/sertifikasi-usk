@@ -12,51 +12,45 @@
     .bg-sidebar{
         background-color: rgb(253, 43, 148);
     }
+    .sidebar .nav-link.active {
+        background-color: #ff69b4 !important;
+        color: #ffffff !important;
+        border-radius: 6px;
+    }
 </style>
 <body>
 <div class="d-flex">
     {{-- SIDEBAR --}}
     <aside class="sidebar bg-sidebar text-white fw-bold">
         <div class="sidebar-header p-3 border-bottom border-white">
-            <h5 class="mb-0">
-                Sertifikasi
-            </h5>
-            <small class="text-white">
-                
-                Administrator
-            </small>
+            <h5 class="mb-0">Sertifikasi</h5>
+            <small class="text-white">Administrator</small>
         </div>
+
         <div class="p-3">
             <ul class="nav nav-pills flex-column gap-2">
                 <li class="nav-item">
-                    <a
-                        href="{{ route('dashboard') }}"
-                        class="nav-link text-white fw-bold
-                        {{ request()->routeIs('dashboard') ? 'active' : '' }}"
-                    >
-                        <!-- <span class="me-2">📊</span> -->
+                    <a href="{{ route('dashboard') }}"
+                    class="nav-link text-white fw-bold
+                    {{ request()->routeIs('dashboard') ? 'active' : '' }}">
                         Dashboard
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a
-                        href="{{route('peserta.index')}}"
-                        class="nav-link text-white fw-bold"
-                    >
-                        <!-- <span class="me-2">👥</span> -->
+                    <a href="{{ route('peserta.index') }}"
+                    class="nav-link text-white fw-bold
+                    {{ request()->routeIs('peserta.*') ? 'active' : '' }}">
                         Data Peserta
                     </a>
                 </li>
                 <li class="nav-item">
-                <a
-                    href="{{ route('skema.index') }}"
+                    <a href="{{ route('skema.index') }}"
                     class="nav-link text-white fw-bold
-                    {{ request()->routeIs('skema.*') ? 'active' : '' }}"
-                >
-                    <!-- <span class="me-2">📋</span> -->
-                    Skema Sertifikasi
-                </a>
+                    {{ request()->routeIs('skema.*') ? 'active' : '' }}">
+                        Skema Sertifikasi
+                    </a>
                 </li>
+
             </ul>
         </div>
     </aside>

@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\Peserta;
 use App\Models\SkemaSertifikasi;
 use Illuminate\Support\Facades\Log;
+use App\Models\User;
+use Illuminate\Support\Facades\DB;
 
 class PesertaController extends Controller
 {
@@ -41,20 +43,53 @@ class PesertaController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
-    {
-        $validated = $request->validate([
-            'no_peserta' => 'required|string|max:50|unique:pesertas,no_peserta',
-            'nama' => 'required|string|max:255',
-            'nik' => 'required|string|max:20|unique:pesertas,nik',
-            'email' => 'nullable|email|max:255',
-            'no_hp' => 'nullable|string|max:20',
-            'alamat' => 'nullable|string',
-            'skema_sertifikasi_id' => 'required|exists:skema_sertifikasis,id',
+        public function store(Request $request)
+        {
+            $messages = [
+                'nama.regex' => 'Nama hanya boleh berisi huruf, spasi, tanda petik satu, dan tanda hubung.',
+                'nik.regex' => 'NIK hanya boleh berisi angka.',
+                'nik.digits' => 'NIK harus tepat 16 digit.',
+                'no_hp.regex' => 'Nomor HP hanya boleh berisi angka.',
+                'email.unique' => 'Email sudah digunakan.',
+                'password.confirmed' => 'Konfirmasi password tidak cocok.',
+                'password.min' => 'Password minimal 8 karakter.',
+            ];
+            $validated = $request->validate([
+                'no_peserta' => 'required|string|max:50|unique:pesertas,no_peserta',
+                'nama' => ['required', 'string', 'max:50', "regex:/^[\pL\s'-]+$/u"],
+                'nik' => 'required|digits:16|unique:pesertas,nik',
+                'email' => 'required|email|max:50|unique:pesertas,email|unique:users,email',
+                'no_hp' => ['nullable', 'string', 'max:20', 'regex:/^[0-9]+$/'],
+                'alamat' => 'nullable|string',
+                'skema_sertifikasi_id' => 'required|exists:skema_sertifikasis,id',
+                'password' => 'required|string|min:8|confirmed',
+            ], $messages);
+            DB::transaction(function () use ($validated) {
+                // Simpan data peserta
+                Peserta::create([
+                    'no_peserta' => $validated['no_peserta'],
+                    'nama' => $validated['nama'],
+                    'nik' => $validated['nik'],
+                    'email' => $validated['email'],
+                    'no_hp' => $validated['no_hp'] ?? null,
+                    'alamat' => $validated['alamat'] ?? null,
+                    'skema_sertifikasi_id' => $validated['skema_sertifikasi_id'],
+                ]);
+        // Buat akUn login peserta
+        User::create([
+            'name' => $validated['nama'],
+            'email' => $validated['email'],
+            'password' => $validated['password'],
+            'role' => 'peserta',
         ]);
-        Peserta::create($validated);
-        return redirect()->route('peserta.index')->with('success','Peserta berhasil ditambahkan.');
-    }
+    });
+
+    return redirect()
+        ->route('peserta.index')
+        ->with('success', 'Data peserta dan akun login berhasil dibuat.');
+}
+```
+
 
     /**
      * Display the specified resource.
