@@ -4,6 +4,20 @@
 
 @section('content')
 
+<style>
+    .btn-utama{
+        background-color: rgb(253, 43, 148);
+    }
+    .btn-utama:hover{
+        background-color: #f4a6b8;
+    }
+    .btn-kedua{
+        background-color: #FFE962;
+    }
+    .btn-kedua:hover{
+        background-color:#fff4ac;
+    }
+</style>
 <div class="d-flex justify-content-between align-items-center mb-4">
     <div>
         <h2>Edit Peserta</h2>
@@ -166,12 +180,12 @@
             </div>
 
             <div class="d-flex gap-2">
-                <button type="submit" class="btn btn-primary">
+                <button type="submit" class="btn btn-utama">
                     Simpan Perubahan
                 </button>
 
                 <a href="{{ route('peserta.index') }}"
-                   class="btn btn-secondary">
+                   class="btn btn-kedua">
                     Batal
                 </a>
             </div>

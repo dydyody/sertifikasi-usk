@@ -1,17 +1,28 @@
 @extends('layouts.app')
 @section('title','Detail Peserta')
 @section('content')
+<style>
+    .btn-utama{
+        background-color: rgb(253, 43, 148);
+    }
+    .btn-utama:hover{
+        background-color: #f4a6b8;
+    }
+    .table-color {
+        background-color: rgb(253, 43, 148) ;
+    }
+</style>
 <div class="d-fiex justify-content-between align-items-center mb-4">
     <div>
         <h2>Detail Peserta</h2>
         <p class="text-muted mb-0">Informasi Lengkap peserta sertifikasi</p>
     </div>
-    <a href="{{route('peserta.index')}}" class="btn btn-secondary">
+    <!-- <a href="{{route('peserta.index')}}" class="btn btn-utama text-white">
         Kembali
-    </a>
+    </a> -->
 </div>
 <div class="card shadow-sm">
-    <div class="card-header bg-primary text-white">
+    <div class="card-header table-color text-white">
         <strong>Data Peserta</strong>
     </div>
     <div class="card-body">
@@ -67,7 +78,7 @@
             Edit Peserta
         </a>
         <a href="{{ route('peserta.index') }}"
-           class="btn btn-secondary">
+           class="btn btn-utama text-white">
             Kembali
         </a>
     </div>

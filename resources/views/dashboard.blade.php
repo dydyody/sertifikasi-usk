@@ -7,8 +7,19 @@
     <title>Dashboard</title>
     @vite(['resources/css/app.css','resources/js/app.js'])
 </head>
+<style>
+    .btn-utama{
+        background-color: rgb(253, 43, 148)!important;
+    }
+    .btn-utama:hover{
+        background-color: #f4a6b8!important;
+    }
+    .utama{
+        background-color: rgb(253, 43, 148);
+    }
+</style>
 <body>
-<nav class="navbar navbar-dark bg-primary">
+<nav class="navbar navbar-dark utama">
     <div class="container">
         <span class="navbar-brand">
             Aplikasi Sertifikasi
@@ -35,7 +46,7 @@
                     <p class="text-muted">
                         Kelola Data Peserta Sertifikasi
                     </p>
-                    <a href="{{route('peserta.index')}}" class="btn btn-primary">Kelola Peserta</a>
+                    <a href="{{route('peserta.index')}}" class="btn btn-utama text-white">Kelola Peserta</a>
                 </div>
             </div>
         </div>
@@ -44,7 +55,7 @@
                 <div class="card-body">
                     <h5>Skema Sertifikasi</h5>
                     <p class="text-muted">Kelola Data Skema Sertifikasi.</p>
-                    <a href="{{route('skema.index')}}" class="btn btn-primary">Kelola Skema</a>
+                    <a href="{{route('skema.index')}}" class="btn btn-utama text-white">Kelola Skema</a>
                 </div>
             </div>
         </div>

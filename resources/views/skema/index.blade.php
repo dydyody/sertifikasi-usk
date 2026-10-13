@@ -2,12 +2,50 @@
 @section('title','Skema Sertifikasi')
 @section('page-title','Skema Sertifikasi')
 @section('content')
+<style>
+    .btn-utama {
+        background-color: rgb(253, 43, 148);
+    }
+    .btn-utama:hover{
+        background-color: #f4a6b8;
+    }
+    .btn-kedua{
+        background-color: #FFE962;
+    }
+    .btn-kedua:hover{
+        background-color:#fff4ac;
+    }
+    .btn-edit{
+        background-color:#f8d7a8;
+        border-color:#f8d7a8;
+        color:black;
+    }
+    .btn-edit:hover{
+        background-color:#efc17d;
+        border-color:#efc17d;
+        color:black;
+    }
+    .btn-hapus{
+        background-color:#f4a6b8;
+        border-color:#f4a6b8;
+        color:black;
+    }
+    .btn-hapus:hover{
+        background-color:#e8899f;
+        border-color:#e889f;
+        color:black;
+    }
+    .table-color th {
+        background-color: rgb(253, 43, 148);
+        color: white;
+    }
+</style>
 <div class="d-flex justify-content-between align-items-center mb-4">
     <div>
         <h3 class="fw-bold mb-1">Skema Sertifikasi</h3>
         <p class="text-muted mb-0">Kelola data skema sertifikasi</p>
     </div>
-    <a href="{{route('skema.create')}}" class="btn btn-primary">+ Tambah Skema</a>
+    <a href="{{route('skema.create')}}" class="btn btn-utama text-white">+ Tambah Skema</a>
 </div>
 <div class="card shadow-sm mb-4">
     <div class="card-body">
@@ -21,12 +59,12 @@
                     value="{{ request('search') }}"
                 >
 
-                <button type="submit" class="btn btn-primary">
+                <button type="submit" class="btn btn-utama text-white">
                     Cari
                 </button>
 
                 @if(request('search'))
-                    <a href="{{ route('skema.index') }}" class="btn btn-secondary">
+                    <a href="{{ route('skema.index') }}" class="btn btn-kedua">
                         Reset
                     </a>
                 @endif
@@ -38,7 +76,7 @@
 <div class="card shadow-sm">
     <div class="card-body">
         <div class="table-responsive">
-            <table class="table table-hover align-middle">
+            <table class="table table-bordered table-hover table-color align-middle">
                 <thead>
                     <tr>
                         <th width="60">No</th>
@@ -68,13 +106,13 @@
                             {{$skema->deskripsi ?:'-'}}
                         </td>
                         <td>
-                            <a href="{{route('skema.edit',$skema)}}" class="btn btn-warning btn-sm">Edit</a>
+                            <a href="{{route('skema.edit',$skema)}}" class="btn btn-edit btn-sm">Edit</a>
                         
                         <form 
                         action="{{route('skema.destroy',$skema)}}" method="POST" class="d-inline" onsubmit="return confirm('Yakin Ingin menghapus skema?')">
                             @csrf
                             @method('DELETE')
-                            <button type="submit" class="btn btn-danger btn-sm">Hapus</button>
+                            <button type="submit" class="btn btn-hapus btn-sm">Hapus</button>
                         </form>
                         </td>   
                     </tr>
@@ -89,7 +127,7 @@
     <div class="card-body text-center py-5">
         <h5>Belum ada data skema</h5>
         <p class="text-muted">Silahkan tambah skema sertifikasi terlebih dahulu</p>
-        <a href="{{route('skema.create')}}" class="btn btn-primary">+ Tambah Skema</a>
+        <a href="{{route('skema.create')}}" class="btn btn-utama text-white">+ Tambah Skema</a>
     </div>
 </div>
 @endif

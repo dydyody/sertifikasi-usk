@@ -1,7 +1,7 @@
 @import 'bootstrap/dist/css/bootstrap.min.css';
 
 body {
-    background-color: wheat;
+    background-color: white;
 }
 .sidebar {
     min-height: 100vh;
