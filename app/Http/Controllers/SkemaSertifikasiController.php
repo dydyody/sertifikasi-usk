@@ -13,6 +13,7 @@ class SkemaSertifikasiController extends Controller
     /**
      * Display a listing of the resource.
      */
+
     public function index(Request $request)
     {
         $search = $request->search;
@@ -22,10 +23,11 @@ class SkemaSertifikasiController extends Controller
                 $q->where('kode', 'like', "%{$search}%")
                 ->orWhere('nama', 'like', "%{$search}%");
             });
-        })->latest()->get();
+        })->orderBy('id', 'asc')->get();
 
         return view('skema.index', compact('skemas', 'search'));
     }
+
 
     /**
      * Show the form for creating a new resource.

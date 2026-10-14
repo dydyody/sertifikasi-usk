@@ -1,7 +1,22 @@
+
 @extends('layouts.app')
 @section('title', 'Tambah Skema')
 @section('page-title', 'Tambah Skema Sertifikasi')
 @section('content')
+<style>
+    .btn-utama{
+        background-color: rgb(253, 43, 148);
+    }
+    .btn-utama:hover{
+        background-color: #f4a6b8;
+    }
+    .btn-kedua{
+        background-color: #FFE962;
+    }
+    .btn-kedua:hover{
+        background-color:#fff4ac;
+    }
+</style>
 <div class="mb-4">
     <h3 class="fw-bold">
         Tambah Skema Sertifikasi
@@ -62,13 +77,13 @@
             <div class="d-flex gap-2">
                 <a
                     href="{{ route('skema.index') }}"
-                    class="btn btn-secondary"
+                    class="btn btn-kedua"
                 >
                     Kembali
                 </a>
                 <button
                     type="submit"
-                    class="btn btn-primary"
+                    class="btn btn-utama text-white"
                 >
                     Simpan
                 </button>
